@@ -1,0 +1,11 @@
+[Unit]
+Description=SteelSeries driver
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/bin/steel --active
+
+[Install]
+WantedBy=multi-user.target
+

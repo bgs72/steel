@@ -1,0 +1,13 @@
+[Unit]
+Description=SteelSeries driver on resume
+After=systemd-suspend.service
+After=systemd-hibernate.service
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/bin/steel --active
+
+[Install]
+WantedBy=systemd-suspend.service
+WantedBy=systemd-hibernate.service

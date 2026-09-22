@@ -1,0 +1,11 @@
+Package: steel
+Version: 0.1.0
+Architecture: amd64
+Section: utils
+Priority: optional
+Depends: bash, mawk, libhidapi-dev, libhidapi-libusb0
+Maintainer: gysens.bart@gmx.com
+Description: Steel is a utility that allows to interface SteelSeries products.
+ Supports:
+ - MSI-GSXX-6QE laptop keyboard
+ - Rival-100 mouse

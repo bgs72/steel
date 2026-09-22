@@ -1,0 +1,44 @@
+#!/bin/sh
+# 
+#   Copyright 2015-2026
+#   Author(s): Bart Gysens <gysens.bart@gmail.com>
+# 
+#   This file is part of Steel.
+# 
+#   Steel is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+# 
+#   Steel is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+# 
+#   You should have received a copy of the GNU General Public License
+#   along with Steel. If not, see <http://www.gnu.org/licenses/>.
+# 
+
+USER=`whoami`
+TAC=`which tac`
+MAWK=`which mawk`
+GREP=`which grep`
+STEEL=`which steel`
+
+if [ -d /usr/lib/systemd ] && [ -d /lib/systemd/system-sleep ] && [ "$USER" = "root" ] && [ ! -z "$TAC" ] && [ ! -z "$MAWK" ] && [ ! -z "$STEEL" ] && [ ! -z "$GREP" ]
+then
+    FILE=/etc/systemd/system/steel.service
+    echo "[Unit]" > $FILE
+    echo "Description=SteelSeries driver" >> $FILE    
+    echo "" >> $FILE
+    echo "[Service]" >> $FILE
+    echo "User=root" >> $FILE
+    echo "Type=oneshot" >> $FILE
+    echo "ExecStart=/usr/bin/steel --active" >> $FILE
+    echo "" >> $FILE
+    echo "[Install]" >> $FILE
+    echo "WantedBy=multi-user.target" >> $FILE
+    
+    systemctl enable /etc/systemd/system/steel.service
+	steel --active
+fi
