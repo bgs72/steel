@@ -1,6 +1,6 @@
 # Steel
 
-Steel is a user-space linux driver to control the background color of the MSI-GS60-6QE laptop SteelSeries keyboard and Rvial-100 mouse.
+Steel is a user-space linux driver to control the background color of the MSI-GS60-6QE laptop SteelSeries keyboard and Rival-100 mouse.
 
 Supported Hardware:
 
